@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Giriş İşlemi Başarısız";
+    Layout = "/Views/Shared/Layout.cshtml";
+}
+
+
+<div class="text-center mt-5 p-5 ">
+    <h5>Giriş İşlemi Başarısız.</h5>
+    <h6 class="mt-4"><i>Tekrardan Giriş Sayfasına Yönlendiriliyorsunuz.</i></h6>
+</div>
+
+<script>
+    setTimeout(function () {
+        window.location.assign("/Account/Login");
+    }, 2000);
+</script>

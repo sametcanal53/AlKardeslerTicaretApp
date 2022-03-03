@@ -1,0 +1,57 @@
+﻿@model AlKardeslerTicaretApp.Models.mProduct
+
+@{
+    ViewBag.Title = "Sil";
+    Layout = "/Views/Shared/Layout.cshtml";
+}
+
+<h2>Sil</h2>
+<hr />
+<h3>Ürünü Silmek İstediğinize Emin Misiniz ? </h3>
+<div>
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Sil" class="btn btn-danger" />
+        @Html.ActionLink("Geri Dön", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+    }
+</div>

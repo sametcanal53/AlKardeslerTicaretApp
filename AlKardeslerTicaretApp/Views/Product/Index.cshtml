@@ -1,0 +1,62 @@
+﻿@model IEnumerable<AlKardeslerTicaretApp.Models.mProduct>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "/Views/Shared/Layout.cshtml";
+}
+<div class="container">
+    <h2>Ürün Listesi</h2>
+    <hr />
+    <p>
+        @Html.ActionLink("Yeni Ürün Ekle", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+    <hr />
+    <table class="table table-hover table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+
+            <th></th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/Images/@item.Image" width="70"/>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.ActionLink("Güncelle", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })
+                    
+                </td>
+                <td>
+                    @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</div>

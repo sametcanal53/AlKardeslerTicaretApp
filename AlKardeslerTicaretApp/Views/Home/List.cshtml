@@ -1,0 +1,33 @@
+﻿@using AlKardeslerTicaretApp.Models
+@model IEnumerable<mProduct>
+@{
+    ViewBag.Title = "Tüm Ürünler";
+}
+
+<div class="container">
+    <div class="row">
+
+        @foreach (var product in Model)
+        {
+            <div class="col-md-4">
+                <div class="mt-3">
+                    <a href="/Home/Details/@product.Id" class="text-decoration-none hover-tema-rengi">
+                        <div class="card">
+                            <img class="card-img-top" src="~/Images/@product.Image">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                </h5>
+
+                                <p class="card-text sinir"><b>@product.Name</b> @product.Description</p>
+
+                                <div><del>@(product.Price*1.05)₺</del> </div>
+                                <div class="fiyat-etiketi">@product.Price₺</div>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

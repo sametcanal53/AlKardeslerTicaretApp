@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:Server=.;Database=AlKardeslerTicaretDB;Trusted_Connection=True;"
+    }
+  }
+}

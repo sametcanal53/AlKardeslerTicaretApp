@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql.onprem",
+      "connectionId": "ConnectionStrings:Server=.;Database=AlKardeslerTicaretDB;Trusted_Connection=True;",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

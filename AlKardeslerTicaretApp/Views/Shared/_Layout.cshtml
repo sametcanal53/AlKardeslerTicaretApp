@@ -1,0 +1,226 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Al Kardesler Ticaret</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header class="sticky">
+        <!-- Navbar -->
+        <div>
+            <nav class="navbar navbar-expand-md navbar-light  justify-content-between">
+                <a class="navbar-brand" href="/Home/Index">
+                    <img src="~/Images/logo.png" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @class = "w-100" }))
+                    {
+                        <div class="input-group">
+
+                            @Html.TextBox("s", null, new { @class = "form-control mr-3 d-block mx-auto", @Placeholder = "Ürün Ara" })
+                            <div class="input-group-append">
+                                <input type="submit" class="btn tema-rengi-bg mr-3" value="Ara" />
+                            </div>
+                        </div>
+                    }
+
+                    @if (Session["User"] == null)
+                    {
+                        <div class="dropdown show text-center">
+
+
+                            <a class="btn tema-rengi-bg dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user"></i> Üyelik İşlemleri
+                            </a>
+                            <div class="dropdown-menu user-management-info">
+                                <a class="dropdown-item tema-rengi-active" href="/Account/Login">Giriş Yap</a>
+                                <hr>
+                                <a class="dropdown-item tema-rengi-active" href="/Account/Register">Üye Ol</a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a class="dropdown-item tema-rengi-active p-2 text-center shopping-cart" href="/Cart/Index">
+                                <i class="fas fa-shopping-cart"></i>
+                                Sepetim
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        if ((Session["User"] as AlKardeslerTicaretApp.Models.mUser).Role == "Admin")
+                        {
+                            <div class="dropdown show text-center">
+
+
+                                <a class="btn tema-rengi-bg dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @((Session["User"] as AlKardeslerTicaretApp.Models.mUser).Firstname) @((Session["User"] as AlKardeslerTicaretApp.Models.mUser).Lastname) (@((Session["User"] as AlKardeslerTicaretApp.Models.mUser).Role))
+                                </a>
+                                <div class="dropdown-menu user-management-info">
+                                    <a class="dropdown-item tema-rengi-active" href="/Product/Index">Ürün Listesi</a>
+                                    <a class="dropdown-item tema-rengi-active" href="/Category/Index">Kategori Listesi</a>
+                                    <a class="dropdown-item tema-rengi-active" href="/User/Index">Üye Listesi</a>
+                                    <a class="dropdown-item tema-rengi-active" href="/Order/AdminIndex">Sipariş Listesi</a>
+                                    <hr>
+                                    <a class="dropdown-item tema-rengi-active" href="/Account/LogOut">Çıkış Yap</a>
+                                </div>
+                            </div>
+
+                        }
+                        else
+                        {
+                            <div class="dropdown show text-center">
+
+
+                                <a class="btn tema-rengi-bg dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @((Session["User"] as AlKardeslerTicaretApp.Models.mUser).Firstname) @((Session["User"] as AlKardeslerTicaretApp.Models.mUser).Lastname)
+                                </a>
+                                <div class="dropdown-menu user-management-info">
+                                    <a class="dropdown-item tema-rengi-active" href="/Order/Index">Sipariş Listesi</a>
+                                    <hr>
+                                    <a class="dropdown-item tema-rengi-active" href="/Account/LogOut">Çıkış Yap</a>
+                                </div>
+                            </div>
+
+                            <div>
+                                <a class="dropdown-item tema-rengi-active p-2 text-center shopping-cart" href="/Cart/Index">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Sepetim
+                                </a>
+                            </div>
+                        }
+                    }
+
+                </div>
+            </nav>
+        </div>
+
+
+        <!-- Navbar Bitiş -->
+        <div class="text-center pb-3">
+            <span class="dropdown cizgili">
+                Elektronik
+                <div class="dropdown-menu">
+                    <div class="dropdown-item">
+                        <h5 class="cursor-none">Bilgisayar</h5>
+                    </div>
+                    <a class="dropdown-item hover-tema-rengi"
+                       href="/Home/List/1">
+                        Masaüstü
+                        Bilgisayar
+                    </a>
+                    <a class="dropdown-item hover-tema-rengi"
+                       href="/Home/List/2">Laptop</a>
+                    <a class="dropdown-item hover-tema-rengi"
+                       href="/Home/List/3">Monitör</a>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-item ">
+                        <h5 class="cursor-none">Telefon</h5>
+                    </div>
+                    <a class="dropdown-item hover-tema-rengi" href="/Home/List/4">
+                        Cep
+                        Telefonu
+                    </a>
+                    <a class="dropdown-item hover-tema-rengi" href="/Home/List/5">
+                        Kapak &
+                        Kılıf
+                    </a>
+                    <a class="dropdown-item hover-tema-rengi"
+                       href="/Home/List/6">
+                        Şarj
+                        Cihazları
+                    </a>
+                </div>
+            </span>
+
+            <span class="dropdown cizgili">
+                Giyim & Moda
+                <div class="dropdown-menu">
+                    <div class="dropdown-item">
+                        <h5 class="cursor-none">Erkek</h5>
+                    </div>
+                    <a class="dropdown-item hover-tema-rengi" href="/Home/List/7">
+                        Gömlek
+                    </a>
+                    <a class="dropdown-item hover-tema-rengi" href="/Home/List/8">
+                        Ayakkabı
+                    </a>
+                    <a class="dropdown-item hover-tema-rengi" href="/Home/List/9">
+                        Şort
+                    </a>
+
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-item ">
+                        <h5 class="cursor-none">Kadın</h5>
+                    </div>
+
+                    <a class="dropdown-item hover-tema-rengi" href="/Home/List/10">
+                        Elbise
+                    </a>
+                    <a class="dropdown-item hover-tema-rengi" href="/Home/List/11">
+                        Gömlek
+                    </a>
+                    <a class="dropdown-item hover-tema-rengi" href="/Home/List/12">
+                        Ayakkabı
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-item ">
+                        <h5 class="cursor-none">Çocuk</h5>
+                    </div>
+                    <a class="dropdown-item hover-tema-rengi" href="/Home/List/13">
+                        Gömlek
+                    </a>
+                    <a class="dropdown-item hover-tema-rengi" href="/Home/List/14">
+                        Şort
+                    </a>
+                    <a class="dropdown-item hover-tema-rengi" href="/Home/List/15">
+                        Ayakkabı
+                    </a>
+
+                </div>
+            </span>
+
+        </div>
+    </header>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAlT68yYVo2Weu7UrIeeZEKYuLVzjO1rEk",
+    authDomain: "projectwebprogramming.firebaseapp.com",
+    projectId: "projectwebprogramming",
+    storageBucket: "projectwebprogramming.appspot.com",
+    messagingSenderId: "847978690056",
+    appId: "1:847978690056:web:37b864a1e13b1951a983bd"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+    </script>
+    <footer>
+        <div class="bg-dark text-white text-center p-5 mt-5">
+            &copy; 2021 - Designed by <a class="text-decoration-none tema-rengi hover-tema-rengi" href="/Home/Index">Sametcan AL </a>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

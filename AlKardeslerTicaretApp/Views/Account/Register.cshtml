@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Giriş Yap";
+    Layout = "/Views/Shared/Layout.cshtml";
+
+}
+
+<div class="container">
+    <img class="d-block m-auto pt-5" src="images/logo.png" alt="">
+    <div class="mt-5">
+        <div class="card">
+            <div class="card-header">
+                <div class="heading">Kayıt Ol</div>
+            </div>
+            <div class="card-body">
+                <form action="/Account/Register" method="post">
+                    <div class="form-group">
+                        <label for="Firstname">Ad</label>
+                        <input type="text" class="form-control" name="Firstname" id="Firstname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Lastname">Soyad</label>
+                        <input type="text" class="form-control" name="Lastname" id="Lastname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="UserName">Username</label>
+                        <input type="text" class="form-control" name="UserName" id="UserName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">E-Mail</label>
+                        <input type="email" class="form-control" name="Email" id="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Password">Şifre</label>
+                        <input type="password" class="form-control" name="Password" id="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordConfirm">Şifre Tekrarı</label>
+                        <input type="password" class="form-control" name="passwordConfirm" id="passwordConfirm" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-info form-control" name="registerButton">Kaydol</button>
+                    </div>
+                    <div class="text-center">
+                        <a href="/Account/Login" id="loginLink" name="loginLink">Zaten Hesabım Var</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

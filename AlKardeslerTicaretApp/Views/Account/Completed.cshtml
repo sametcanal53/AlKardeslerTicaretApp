@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Giriş İşlemi Başarıyla Gerçekleştirilmiştir";
+    Layout = "/Views/Shared/Layout.cshtml";
+}
+
+
+<div class="text-center mt-5 p-5 ">
+    <h5>Giriş İşlemi Başarıyla Gerçekleştirilmiştir.</h5>
+    <h6 class="mt-4"><i>Anasayfaya yönlendiriliyorsunuz.</i></h6>
+</div>
+
+<script>
+    setTimeout(function() {
+        window.location.assign("/Home/Index");
+    }, 3000);
+</script>

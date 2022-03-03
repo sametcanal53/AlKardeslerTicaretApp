@@ -1,0 +1,49 @@
+﻿@model AlKardeslerTicaretApp.Models.mShipping
+    
+@{
+    ViewBag.Title = "Sipariş Onayla";
+    Layout = "/Views/Shared/Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h3>Adres Bilgileriniz</h3>
+    <i>Lütfen eksiksiz doldurunuz</i>
+    <hr>
+    @using (Html.BeginForm())
+    {
+
+        <div class="form-group row">
+            <label for="kullaniciAdi" class="col-sm-4 col-form-label">Kullanıcı Adı </label>
+             @Html.TextBoxFor(user => user.Username,new { @class = "form-control col-sm-8" ,@Value=((Session["User"] as AlKardeslerTicaretApp.Models.mUser).Username) ,@Readonly = "true"})
+
+        </div>
+
+        <div class="form-group row">
+            <label for="baslik" class="col-sm-4 col-form-label">Başlık ( Ev , İş , Diğer )  </label>
+            @Html.TextBoxFor(user => user.Baslik, new { @class = "form-control col-sm-8" })
+        </div>
+
+        <div class="form-group row">
+            <label for="adres" class="col-sm-4 col-form-label">Adres </label>
+            @Html.TextBoxFor(user => user.Adres, new { @class = "form-control col-sm-8" })
+        </div>
+
+
+        <div class="form-group row">
+            <label for="ilce" class="col-sm-4 col-form-label">Ilce </label>
+            @Html.TextBoxFor(user => user.Ilce, new { @class = "form-control col-sm-8" })
+        </div>
+
+
+        <div class="form-group row">
+            <label for="sehir" class="col-sm-4 col-form-label">Sehir </label>
+            @Html.TextBoxFor(user => user.Sehir, new { @class = "form-control col-sm-8" })
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-4"></div>
+            <button type="submit" class="col-sm-8 btn btn-primary btn-block">Kaydet</button>
+        </div>
+    }
+</div>
+

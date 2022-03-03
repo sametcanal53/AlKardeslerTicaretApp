@@ -1,0 +1,49 @@
+﻿@model AlKardeslerTicaretApp.Models.mUser
+
+@{
+    ViewBag.Title = "Sil";
+    Layout = "/Views/Shared/Layout.cshtml";
+}
+
+<h2>Sil</h2>
+<hr />
+<h3>Üyeyi Silmek İstediğinize Emin Misiniz ? </h3>
+<div>
+    <div class="dl-horizontal mt-3">
+
+        <div>
+            <span>@Html.DisplayNameFor(model => model.Firstname)</span>
+            <input type="text" name="name" value="@Html.DisplayFor(model => model.Firstname)" class="form-control" readonly />
+        </div>
+
+        <div>
+            <span>@Html.DisplayNameFor(model => model.Lastname)</span>
+            <input type="text" name="name" value="@Html.DisplayFor(model => model.Lastname)" class="form-control" readonly />
+        </div>
+        <div>
+            <span>@Html.DisplayNameFor(model => model.Username)</span>
+            <input type="text" name="name" value="@Html.DisplayFor(model => model.Username)" class="form-control" readonly />
+        </div>
+        <div>
+            <span>@Html.DisplayNameFor(model => model.Email)</span>
+            <input type="text" name="name" value="@Html.DisplayFor(model => model.Email)" class="form-control" readonly />
+        </div>
+        <div>
+            <span>@Html.DisplayNameFor(model => model.Role)</span>
+            <input type="text" name="name" value="@Html.DisplayFor(model => model.Role)" class="form-control" readonly />
+        </div>
+
+
+
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color mt-2">
+            <input type="submit" value="Sil" class="btn btn-danger" />
+            @Html.ActionLink("Geri Dön", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    }
+</div>

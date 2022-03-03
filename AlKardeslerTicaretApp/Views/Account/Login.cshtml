@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Giriş Yap";
+    Layout = "/Views/Shared/Layout.cshtml";
+
+}
+
+<div class="container">
+    <img class="d-block m-auto pt-5" src="images/logo.png" alt="">
+    <div class="mt-5">
+        <div class="card m-5">
+            <div class="card-header">
+                <div class="heading">Giriş Yap</div>
+            </div>
+            <div class="card-body">
+                <form action="/Account/Login" method="POST">
+                    <div class="form-group">
+                        <label for="Email">E-Mail</label>
+                        <input type="email" name="Email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Password">Şifre</label>
+                        <input type="password" name="Password" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success form-control" name="loginButton" id="loginButton">Giriş Yap</button>
+
+                    </div>
+                </form>
+                <hr>
+                <div class="form-group">
+                    <a href="/Account/Register">
+                        <button type="button"
+                                class="btn mt-2 btn-info form-control">
+                            Kayıt Ol
+                        </button>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

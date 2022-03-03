@@ -1,0 +1,103 @@
+﻿@model AlKardeslerTicaretApp.Models.mOrderDetail
+@{
+    ViewBag.Title = "Siparis Detayı";
+    Layout = "/Views/Shared/Layout.cshtml";
+}
+
+
+<div class="container">
+
+    <a href="/Order/Index">
+        <button class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Geri
+            Dön
+        </button>
+    </a>
+
+    <div class="card mt-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-3 align-self-center">
+                    <h5>Sipariş Detayı</h5>
+                </div>
+                <div class="col-3 text-center">
+                    <div class="card-subtitle"><i>Sipariş Tarihi</i></div>
+                    <div>@Model.OrderDate</div>
+                </div>
+                <div class="col-3 text-center">
+                    <div class="card-subtitle"><i>Sipariş No</i> </div>
+                    <div>@Model.OrderNumber</div>
+                </div>
+                <div class="col-3 text-center">
+                    <div class="card-subtitle"><i>Sipariş Tutarı</i> </div>
+                    <div>@Model.Total₺</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 mt-5 mb-5">
+            <div class="card">
+                <div class="card-header">Teslimat Bilgileri</div>
+                <div class="card-body">
+                    <p class="card-text">@Model.Username</p>
+                    <hr>
+                    <p class="card-text">@Model.Adres</p>
+                    <p class="card-text"><b>@Model.Ilce / @Model.Sehir</b> </p>
+                    <br>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-6  mt-5 mb-5">
+            <div class="card">
+                <div class="card-header">Ödeme Bilgileri</div>
+                <div class="card-body">
+                    <div class="row">
+                        <span class="col-7 col-md-8">Fiyat</span>
+                        <span class="col-5 col-md-4 text-right">@(Model.Total*1.25)₺</span>
+
+                        <span class="col-7 col-md-8 mt-1">Sepette Anında 25% İndirim</span>
+                        <span class="col-5 col-md-4 text-right mt-1">@(Model.Total*0.25)₺</span>
+                        <hr>
+                        <span class="col-7 col-md-8 h5 mt-5">Toplam</span>
+                        <span class="col-5 col-md-4 text-right mt-5"><b>@Model.Total₺</b></span>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card text-center">
+        <div class="card-header">
+            Ürünler
+        </div>
+        <div class="card-body">
+            <table class="table table-hover table-borderless">
+                <thead>
+                    <tr>
+                        <td>Ürün Fotoğrafı</td>
+                        <td>Ürün Adı</td>
+                        <td>Adet</td>
+                        <td>Fiyat</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Orderlines)
+                    {
+                        <tr>
+                            <td>
+                                <img class="siparis-img" src="~/Images/@item.Image" alt="">
+                            </td>
+                            <td>@item.ProductName</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.Price₺</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

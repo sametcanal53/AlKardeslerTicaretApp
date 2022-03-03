@@ -1,0 +1,39 @@
+﻿@model IEnumerable<AlKardeslerTicaretApp.Models.mUserOrder>
+@{
+    ViewBag.Title = "Siparis Detayı";
+    Layout = "/Views/Shared/Layout.cshtml";
+}
+
+
+<div class="container">
+    <h3 class="text-center mt-3 tema-rengi alticizgili">Siparişlerim</h3>
+    <table class="text-center table table-hover table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Sipariş Numarası</th>
+                <th scope="col">Sipariş Tarihi</th>
+                <th scope="col">Toplam Ücret</th>
+                <th scope="col">Durum</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>@item.OrderNumber</td>
+                    <td>@item.OrderDate.ToShortDateString()</td>
+                    <td>@item.Total₺</td>
+                    <td>@item.OrderState</td>
+                    <td>
+                        <a href="/Order/OrderDetail/@item.Id">
+                        <button class="btn btn-info">Detay</button>
+                        </a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+        </table>
+</div>
